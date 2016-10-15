@@ -47,13 +47,14 @@ enum SymbolCode
 
 enum KeyCode
 	{
-		KDown    = 0x50,
-		KUp      = 0x48,
-		KLeft    = 0x4b,
-		KRight   = 0x4d,
-		KEnter   = 0x0d,
-		KEsc     = 0x1b,
-		KDefault = 0x25
+		KDown      = 0x50,
+		KUp        = 0x48,
+		KLeft      = 0x4b,
+		KRight     = 0x4d,
+		KEnter     = 0x0d,
+		KEsc       = 0x1b,
+		KDefault   = 0x25,
+		KBackspace = 0x08
 	};
 
 struct TextAttribute
@@ -64,10 +65,11 @@ struct TextAttribute
 		unsigned char LightTextAttr;
 		unsigned char XTextAttr;
 		unsigned char GhostTextAttr;
+		unsigned char DarkGhostTextAttr;
 		unsigned char HeadTextAttr;
 		unsigned char LineTextAttr;
 		unsigned char TextAttr;
-	} TA;
+	} TA,DTA,LTA;
 
 HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 UINT CodePage;// код страницы символов, используемой системой по умолчанию
@@ -85,9 +87,12 @@ void PrintChr(COORD Pos, unsigned char Clr, unsigned char Smbl);
 void PrintStr(COORD Pos, unsigned char Clr, char *Str);
 void Filling(CharAttr Scrn[sizeY][sizeX], Ghost *Ghs,  unsigned int &Score, unsigned int &FieldCount);
 void ReadRecords(char NameList[StrCount][LenStr], unsigned int ScoreList[StrCount]);
-void ChangeRecords(unsigned int &Score);
+void SaveRecords(char NameList[StrCount][LenStr], unsigned int ScoreList[StrCount]);
 void Records(COORD &SizeWin, unsigned int &Score,char NameList[StrCount][LenStr], unsigned int ScoreList[StrCount]);
 void ShowRecords(COORD SizeWin, char NameList[StrCount][LenStr], unsigned int ScoreList[StrCount], unsigned int &Score, short int Index);
+void SetName(COORD SizeWin, COORD Pos, char Str[21]);
+void Exit(COORD SizeWin);
+void Settings(COORD SizeWin);
 
 int main()
 {
@@ -101,19 +106,31 @@ int shell()
 	unsigned int Score=0;
 	unsigned int ScoreList[StrCount];
 	int ItN = 0;
-
-	char GoodBye[] = "Всего хорошего!";
 	char NameList[StrCount][LenStr];
 	
-	TA.BorderTextAttr = 0x07;
-	TA.SelTextAttr = 0x70;
-	TA.LightTextAttr = 0x0f;
-	TA.LightSelTextAttr = 0xf0;
-	TA.XTextAttr = 0x0d;
-	TA.GhostTextAttr = 0x0e;
-	TA.HeadTextAttr = 0x0f;
-	TA.LineTextAttr = 0x08;
-	TA.TextAttr = 0x07;
+	DTA.BorderTextAttr = 0x07;
+	DTA.SelTextAttr = 0x70;
+	DTA.LightTextAttr = 0x0f;
+	DTA.LightSelTextAttr = 0xf0;
+	DTA.XTextAttr = 0x0d;
+	DTA.GhostTextAttr = 0x0e;
+	DTA.DarkGhostTextAttr = 0x06;
+	DTA.HeadTextAttr = 0x0f;
+	DTA.LineTextAttr = 0x08;
+	DTA.TextAttr = 0x07;
+
+	LTA.BorderTextAttr = 0x8f;
+	LTA.SelTextAttr = 0xf8;
+	LTA.LightTextAttr = 0x80;
+	LTA.LightSelTextAttr = 0xf0;
+	LTA.XTextAttr = 0x85;
+	LTA.GhostTextAttr = 0x8e;
+	LTA.DarkGhostTextAttr = 0x86;
+	LTA.HeadTextAttr = 0x80;
+	LTA.LineTextAttr = 0x81;
+	LTA.TextAttr = 0x80;
+
+	TA = DTA;
 
 	PreSet(SizeWin);
 	ReadRecords(NameList, ScoreList);
@@ -124,45 +141,66 @@ int shell()
 		{
 			case 0:// PLAY()
 				{
-					//ЗДЕСЬ ФУНКЦИЯ PLAY()
-					Play(SizeWin, Score);	
-					//break;
+					Play( SizeWin, Score);	
 				}
 			case 1:// RECORDS()
 				{
-					
-					
 					Records( SizeWin, Score, NameList, ScoreList);
-					//ЗДЕСЬ ФУНКЦИЯ RECORDS()
-
-							
 					break;
 				}
 			case 2:// SETTINGS()
 				{
-					//mciSendString(L"play sound\\orkestr-polya-moria-bez-nazvaniya_(mp3.cc).mp3 repeat",0,0,0);
-
 					//ЗДЕСЬ ФУНКЦИЯ SETTINGS()
-
-					system("cls");
-					getch();
-					//mciSendString(L"stop sound\\orkestr-polya-moria-bez-nazvaniya_(mp3.cc).mp3",0,0,0);		
+					Settings( SizeWin);
 					break;
 				}
 			case 3:// EXIT
 				{
-					system("cls");
-					SizeWin.X = (SizeWin.X-strlen(GoodBye))/2;
-					SizeWin.Y = SizeWin.Y/2 - 1;
-					GotoXY(SizeWin);
-					printf(GoodBye);
-					
-					mciSendString(L"play sound\\завершение.wav wait",0,0,0);
+					Exit( SizeWin);
 					return 0;
 				}// EXIT
 		}
 	};
 	return -1;
+}
+
+void Exit(COORD SizeWin)
+{
+	char GoodBye[] = "Всего хорошего!";
+	int i, j, n=strlen(GoodBye);
+	COORD Pos;
+
+	system("cls");
+	SizeWin.X = (SizeWin.X-strlen(GoodBye))/2;
+	SizeWin.Y = SizeWin.Y/2 - 1;
+	Pos.X = SizeWin.X-1;
+	Pos.Y = SizeWin.Y;
+	mciSendString(L"play sound\\завершение.wav",0,0,0);
+	PrintChr(Pos, TA.DarkGhostTextAttr, GoodBye[0]);
+	Sleep(50);
+	for(i=1; i<n; i++)
+	{
+		PrintChr(Pos, TA.GhostTextAttr, GoodBye[i-1]);
+		Pos.X++;
+		PrintChr(Pos, TA.DarkGhostTextAttr, GoodBye[i]);
+		Sleep(50);
+	}
+	PrintChr(Pos, TA.GhostTextAttr, GoodBye[i-1]);
+	Sleep(300);
+	Pos.X = SizeWin.X-1;
+	Pos.Y = SizeWin.Y;
+
+	PrintChr(Pos, TA.DarkGhostTextAttr, GoodBye[0]);
+	Sleep(50);
+	for(i=1; i<n; i++)
+	{
+		PrintChr(Pos, TA.GhostTextAttr, ' ');
+		Pos.X++;
+		PrintChr(Pos, TA.DarkGhostTextAttr, GoodBye[i]);
+		Sleep(50);
+	}
+	PrintChr(Pos, TA.GhostTextAttr, ' ');
+	Sleep(50);
 }
 
 void GotoXY(COORD &Pos)
@@ -178,7 +216,6 @@ int Menu(COORD Center, int &CurrItem)
 	const int IL = 14;// длина строки меню
 
 	char Items[IQ][IL] = {"    Игра     ","   Рекорды   ","  Настройки  ","    Выход    "};// можно добавлять строки, но 'выход' должен быть в последней строке!!!
-	char MelodyFileName[] = "chimes.wav";
 
 	COORD Pos;
 
@@ -252,7 +289,9 @@ void PreSet(COORD &SizeWin)
 	unsigned int sx;
 	unsigned int sy; 
 	// устанавливаем страницу символов ASCII на ввод и вывод кириллицы
-	CodePage = /*866;//*/GetConsoleOutputCP();
+	CodePage = GetConsoleOutputCP();
+	SetConsoleTextAttribute(handle,TA.BorderTextAttr);
+	system("cls");
 
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
@@ -1497,12 +1536,6 @@ void ReadRecords(char NameList[StrCount][LenStr], unsigned int ScoreList[StrCoun
 
 }
 
-void ChangeRecords(unsigned int &Score)
-{
-	
-
-}
-
 void Records(COORD &SizeWin, unsigned int &Score,char NameList[StrCount][LenStr], unsigned int ScoreList[StrCount])
 {
 	short int i;
@@ -1535,9 +1568,11 @@ void Records(COORD &SizeWin, unsigned int &Score,char NameList[StrCount][LenStr]
 		}
 		ShowRecords(SizeWin, NameList, ScoreList, Score, i+1);
 	}
+	int Key=KDefault;
 	while(1)
 	{
-		if(getch() == KEsc)
+		Key=getch();
+		if(Key == KEsc || Key == KEnter)
 		{
 			system("cls");
 			mciSendString(L"stop sound\\рекорды.mp3",0,0,0);
@@ -1550,29 +1585,265 @@ void Records(COORD &SizeWin, unsigned int &Score,char NameList[StrCount][LenStr]
 
 void ShowRecords(COORD SizeWin, char NameList[StrCount][LenStr],unsigned int  ScoreList[StrCount], unsigned int &Score, short int Index)
 {
-	int i;
+	int i, Y;
 	COORD Pos;
 
 	SizeWin.Y=(SizeWin.Y-20)/2;
-	SizeWin.X=SizeWin.X/2-10;
+	SizeWin.X=SizeWin.X/2-9;
 	SetConsoleTextAttribute(handle,TA.BorderTextAttr);
 	for(i=0; i<StrCount; i++)
 	{
-		Pos.X=SizeWin.X;
+		Pos.X=SizeWin.X-14;
 		Pos.Y=SizeWin.Y+2*i;
 		GotoXY(Pos);
 		if(Index == i)
 		{
+			Y=Pos.Y;
 			SetConsoleTextAttribute(handle,TA.GhostTextAttr);
-			printf(">> %6s\t%d  << Ваш результат",NameList[i],ScoreList[i]);
+			
+			printf(">>|                      %d  |<<", ScoreList[i]);
+
 			SetConsoleTextAttribute(handle,TA.BorderTextAttr);
 		}
-		else printf("   %6s\t%d",NameList[i],ScoreList[i]);
+		else printf("   %20s  %d",NameList[i],ScoreList[i]);
 	}
-	Pos.X=SizeWin.X-7;
+	if(Index>-1)
+	{
+		Pos.X = SizeWin.X+8;
+		Pos.Y = Y;
+		SetName( SizeWin, Pos, NameList[Index]);
+		SaveRecords(NameList, ScoreList);
+		Pos.X += 9;
+		PrintStr(Pos, TA.LineTextAttr,"   ");
+		Pos.X -= 31;
+		PrintStr(Pos, TA.LineTextAttr,"   ");
+	}
+	Pos.X=SizeWin.X-13;
 	Pos.Y=SizeWin.Y+22;
-	GotoXY(Pos);
-	SetConsoleTextAttribute(handle,TA.LineTextAttr);
-	printf("Нажмите 'Esc', чтобы выйти в меню");
+	PrintStr(Pos, TA.LineTextAttr, "Нажмите 'Esc' или 'Enter', чтобы выйти в меню");
 	SetConsoleTextAttribute(handle,TA.BorderTextAttr);
+}
+
+void SetName(COORD SizeWin, COORD Pos, char Str[21])
+{
+	unsigned int Symbol = 0;
+	int i;
+	COORD PosEnt;
+
+	PosEnt.X = SizeWin.X-13;
+	PosEnt.Y = SizeWin.Y+22;
+	PrintStr(PosEnt, TA.HeadTextAttr, "Нажмите 'Enter' по завершении ввода имени");
+
+	// показываем курсор.
+	CONSOLE_CURSOR_INFO CursorInfo;
+	GetConsoleCursorInfo( handle, &CursorInfo );
+	CursorInfo.bVisible = TRUE;
+	SetConsoleCursorInfo( handle, &CursorInfo );
+
+	Str[0]='\0';
+	PosEnt.X = Pos.X+1;
+	PosEnt.Y = Pos.Y;
+	i=0;
+	do{
+		GotoXY(Pos);
+		Symbol = getch();
+
+		if( (Symbol>31 && Symbol<127) || (Symbol>191 && Symbol<256) || Symbol==KBackspace)
+		{
+			if(Symbol==KBackspace && i>0)
+			{
+				//PosEnt.X = Pos.X-i+1;
+				PrintChr(PosEnt, TA.HeadTextAttr, ' ');
+				Str[--i]='\0';
+				PosEnt.X++;
+				PrintStr(PosEnt, TA.HeadTextAttr, Str);
+				
+				continue;
+			}
+			if(i<20)
+			{
+				Str[i++] = Symbol;
+				Str[i] = '\0';
+				PosEnt.X--;
+				PrintStr(PosEnt, TA.HeadTextAttr, Str);
+				
+			}
+		}
+	}while(Symbol != KEnter);
+	PrintStr(PosEnt, TA.GhostTextAttr, Str);
+	// прячем курсор
+	CursorInfo.bVisible = FALSE;
+	SetConsoleCursorInfo( handle, &CursorInfo );
+}
+
+void SaveRecords(char NameList[StrCount][LenStr], unsigned int  ScoreList[StrCount])
+{
+	FILE* RecFile;
+	char RecFileName[]="levels\\records.txt";
+	char str[LenStr];
+	char strNum[LenStr];
+	int i;
+	
+	RecFile = fopen (RecFileName,"r+");
+	if(RecFile != 0)
+	{
+		for(i=0; i<StrCount; i++)
+		{
+			strcpy(str, NameList[i]);
+			strcat(str, "\t");
+			itoa( ScoreList[i], strNum, 10);
+			strcat(str, strNum);
+			strcat(str, "\n");
+			fputs(str, RecFile);
+		}
+		
+		fclose(RecFile);
+	}
+}
+
+void Settings(COORD SizeWin)
+{
+	const int IQ = 2;// количество строк меню
+	const int IL = 17;// длина строки меню
+	TextAttribute TMP_TA;
+
+	char Items[IQ][IL] = {"   Тёмный фон   ","   Светлый фон  "};
+	char str[10][LenStr] = {"Обычный текст",
+							"Выделенный текст",
+							"Светлый текст",
+							"Светлый выделенный текст",
+							"Текст игровой информации",
+							"х - муха",
+							"х - тёмная муха",
+							"х - голова",
+							"ххх - линия",
+							"ххх - бордюр"};
+	str[5][0]=ChGhost;
+	str[6][0]=ChGhost;
+	str[7][0]=ChHead;
+	str[8][0]=ChLine; str[8][1]=ChLine; str[8][2]=ChLine; 
+	str[9][0]=ChBorder; str[8][1]=ChBorder; str[8][2]=ChBorder; 
+
+	/*LTA.BorderTextAttr = 0x8f;
+	LTA.SelTextAttr = 0xf8;
+	LTA.LightTextAttr = 0x80;
+	LTA.LightSelTextAttr = 0xf0;
+	LTA.XTextAttr = 0x85;
+	LTA.GhostTextAttr = 0x8e;
+	LTA.DarkGhostTextAttr = 0x86;
+	LTA.HeadTextAttr = 0x80;
+	LTA.LineTextAttr = 0x81;
+	LTA.TextAttr = 0x80;*/
+
+	COORD Pos,PosMenu;
+	int Key = KDefault, CurIt, i, j;
+	PosMenu.X = (SizeWin.X/2-IL+1)/2;// = 11
+	PosMenu.Y = SizeWin.Y/2-1;// = 15
+
+	system("cls");
+	if(TA.BorderTextAttr == DTA.BorderTextAttr) 
+	{
+		PrintStr(PosMenu, TA.SelTextAttr, Items[0]);
+		PosMenu.Y +=2;
+		PrintStr(PosMenu, TA.TextAttr, Items[1]);
+		CurIt=0;
+	}
+	else
+	{
+		PrintStr(PosMenu, TA.TextAttr, Items[0]);
+		PosMenu.Y +=2;
+		PrintStr(PosMenu, TA.SelTextAttr, Items[1]);
+		CurIt=1;
+	}
+	TMP_TA=TA;
+	while(!(Key==KEnter))
+	{
+		Pos.X = SizeWin.X/2+5;
+		Pos.Y = 6;
+		PrintStr( Pos, TMP_TA.TextAttr, str[0]);
+		Pos.Y += 2;
+		PrintStr( Pos, TMP_TA.SelTextAttr, str[1]);
+		Pos.Y += 2;
+		PrintStr( Pos, TMP_TA.LightTextAttr, str[2]);
+		Pos.Y += 2;
+		PrintStr( Pos, TMP_TA.LightSelTextAttr, str[3]);
+		Pos.Y += 2;
+		PrintStr( Pos, TMP_TA.XTextAttr, str[4]);
+		Pos.Y += 2;
+		PrintStr( Pos, TMP_TA.GhostTextAttr, str[5]);
+		SetConsoleOutputCP(CodePage);
+		PrintChr( Pos, TMP_TA.GhostTextAttr, str[5][0]);
+		SetConsoleOutputCP(1251);
+		Pos.Y += 2;
+		PrintStr( Pos, TMP_TA.DarkGhostTextAttr, str[6]);
+		SetConsoleOutputCP(CodePage);
+		PrintChr( Pos, TMP_TA.DarkGhostTextAttr, str[6][0]);
+		SetConsoleOutputCP(1251);
+		Pos.Y += 2;
+		PrintStr( Pos, TMP_TA.HeadTextAttr, str[7]);
+		Pos.Y += 2;
+		PrintStr( Pos, TMP_TA.LineTextAttr, str[8]);
+		SetConsoleOutputCP(CodePage);
+		PrintChr( Pos, TMP_TA.LineTextAttr, str[8][0]); Pos.X++;
+		PrintChr( Pos, TMP_TA.LineTextAttr, str[8][0]); Pos.X++;
+		PrintChr( Pos, TMP_TA.LineTextAttr, str[8][0]); Pos.X-=2;
+		SetConsoleOutputCP(1251);
+		Pos.Y += 2;
+		PrintStr( Pos, TMP_TA.BorderTextAttr, str[9]);
+		SetConsoleOutputCP(CodePage);
+		PrintChr( Pos, TMP_TA.BorderTextAttr, str[9][0]); Pos.X++;
+		PrintChr( Pos, TMP_TA.BorderTextAttr, str[9][0]); Pos.X++;
+		PrintChr( Pos, TMP_TA.BorderTextAttr, str[9][0]); Pos.X-=2;
+		SetConsoleOutputCP(1251);
+
+		Key = getch();
+
+		switch(Key)
+		{
+			case KUp :
+			{
+				CurIt=(CurIt+1)%2;
+				break;
+			}
+			case KDown :
+			{
+				CurIt=(CurIt+1)%2;
+				break;
+			}
+			case KEnter:
+			{
+				
+				break;
+			}
+		}
+		if(CurIt == 0)
+		{
+			TMP_TA = DTA;
+			PosMenu.Y -=2;
+			PrintStr(PosMenu, TA.SelTextAttr, Items[0]);
+			PosMenu.Y +=2;
+			PrintStr(PosMenu, TA.TextAttr, Items[1]);
+		}
+		else
+		{
+			TMP_TA = LTA;
+			PosMenu.Y -=2;
+			PrintStr(PosMenu, TA.TextAttr, Items[0]);
+			PosMenu.Y +=2;
+			PrintStr(PosMenu, TA.SelTextAttr, Items[1]);
+		}
+		for(j=1; j<SizeWin.Y-1; j++)
+		{
+			Pos.Y=j;
+			for(i=SizeWin.X/2; i<SizeWin.X-1; i++)
+			{
+				Pos.X=i;
+				PrintChr(Pos, TMP_TA.BorderTextAttr, ' ');
+			}
+		}
+		
+	}
+	TA=TMP_TA;
+	SetConsoleTextAttribute(handle, TA.BorderTextAttr);
+	system("cls");
 }

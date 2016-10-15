@@ -1,0 +1,18 @@
+﻿Build started 26.09.2016 23:05:58.
+Project "C:\Documents and Settings\LisitsynIE\Мои документы\Visual Studio 2010\Projects\123\Xonix\Xonix\Xonix.vcxproj" on node 2 (build target(s)).
+InitializeBuildStatus:
+  Creating "Release\Xonix.unsuccessfulbuild" because "AlwaysCreate" was specified.
+ClCompile:
+  All outputs are up-to-date.
+  All outputs are up-to-date.
+Link:
+  All outputs are up-to-date.
+  Xonix.vcxproj -> C:\Documents and Settings\LisitsynIE\Мои документы\Visual Studio 2010\Projects\123\Xonix\Release\Xonix.exe
+FinalizeBuildStatus:
+  Deleting file "Release\Xonix.unsuccessfulbuild".
+  Touching "Release\Xonix.lastbuildstate".
+Done Building Project "C:\Documents and Settings\LisitsynIE\Мои документы\Visual Studio 2010\Projects\123\Xonix\Xonix\Xonix.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.68
