@@ -1,4 +1,4 @@
-﻿Build started 10/11/2016 1:22:10 AM.
+﻿Build started 11/4/2016 12:50:54 AM.
 Project "C:\Documents and Settings\LisitsynIE\Xonix\Xonix\Xonix.vcxproj" on node 2 (build target(s)).
 InitializeBuildStatus:
   Creating "Debug\Xonix.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -6,93 +6,95 @@ ClCompile:
   All outputs are up-to-date.
   C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\Xonix.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Xonix.cpp
   Xonix.cpp
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(170): warning C4101: 'j' : unreferenced local variable
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(240): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(171): warning C4101: 'j' : unreferenced local variable
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(241): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\conio.h(128) : see declaration of 'getch'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(314): warning C4996: 'chdir': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _chdir. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(315): warning C4996: 'chdir': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _chdir. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\direct.h(123) : see declaration of 'chdir'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(372): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(373): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\stdlib.h(867) : see declaration of 'itoa'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(373): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(374): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(374): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(375): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(375): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(376): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(376): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(377): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(377): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(378): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(401): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(402): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\stdlib.h(867) : see declaration of 'itoa'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(437): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(471): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _kbhit. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(438): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(472): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _kbhit. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\conio.h(130) : see declaration of 'kbhit'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(473): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(474): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\conio.h(128) : see declaration of 'getch'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(479): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _kbhit. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(480): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _kbhit. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\conio.h(130) : see declaration of 'kbhit'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(481): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(482): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\conio.h(128) : see declaration of 'getch'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(660): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(683): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(723): warning C4244: '=' : conversion from 'short' to 'unsigned char', possible loss of data
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(724): warning C4244: 'argument' : conversion from 'short' to 'unsigned char', possible loss of data
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(856): warning C4244: '=' : conversion from 'short' to 'unsigned char', possible loss of data
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(888): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(661): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(684): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(724): warning C4244: '=' : conversion from 'short' to 'unsigned char', possible loss of data
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(725): warning C4244: 'argument' : conversion from 'short' to 'unsigned char', possible loss of data
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(858): warning C4244: '=' : conversion from 'short' to 'unsigned char', possible loss of data
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(890): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\conio.h(128) : see declaration of 'getch'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(909): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(911): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\conio.h(128) : see declaration of 'getch'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(934): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(936): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\conio.h(128) : see declaration of 'getch'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(975): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(977): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\conio.h(128) : see declaration of 'getch'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1500): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1502): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\stdlib.h(867) : see declaration of 'itoa'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1514): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1516): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1557): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-          c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1564): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-          c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1565): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1559): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
 c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1566): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1574): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
-          c:\program files\microsoft visual studio 10.0\vc\include\conio.h(128) : see declaration of 'getch'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1649): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
-          c:\program files\microsoft visual studio 10.0\vc\include\conio.h(128) : see declaration of 'getch'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1687): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-          c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1692): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1567): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1693): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-          c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1694): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
-          c:\program files\microsoft visual studio 10.0\vc\include\stdlib.h(867) : see declaration of 'itoa'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1568): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1576): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\conio.h(128) : see declaration of 'getch'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1651): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\conio.h(128) : see declaration of 'getch'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1689): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1694): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
 c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1695): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1696): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1696): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\stdlib.h(867) : see declaration of 'itoa'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1697): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1721): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1721): warning C4309: '=' : truncation of constant value
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1722): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1722): warning C4309: '=' : truncation of constant value
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1698): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1723): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1723): warning C4309: '=' : truncation of constant value
 c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1724): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
 c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1724): warning C4309: '=' : truncation of constant value
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1724): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1724): warning C4309: '=' : truncation of constant value
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1724): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1724): warning C4309: '=' : truncation of constant value
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1725): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1725): warning C4309: '=' : truncation of constant value
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1725): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1725): warning C4309: '=' : truncation of constant value
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1725): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1725): warning C4309: '=' : truncation of constant value
-c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1799): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1726): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1726): warning C4309: '=' : truncation of constant value
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1726): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1726): warning C4309: '=' : truncation of constant value
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1726): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1726): warning C4309: '=' : truncation of constant value
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1727): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1727): warning C4309: '=' : truncation of constant value
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1727): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1727): warning C4309: '=' : truncation of constant value
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1727): warning C4305: '=' : truncation from 'SymbolCode' to 'char'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1727): warning C4309: '=' : truncation of constant value
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1801): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
           c:\program files\microsoft visual studio 10.0\vc\include\conio.h(128) : see declaration of 'getch'
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1741): warning C4101: 'i' : unreferenced local variable
+c:\documents and settings\lisitsynie\xonix\xonix\xonix.cpp(1741): warning C4101: 'j' : unreferenced local variable
 ManifestResourceCompile:
   All outputs are up-to-date.
 Link:
@@ -112,4 +114,4 @@ Done Building Project "C:\Documents and Settings\LisitsynIE\Xonix\Xonix\Xonix.vc
 
 Build succeeded.
 
-Time Elapsed 00:00:04.62
+Time Elapsed 00:00:03.54

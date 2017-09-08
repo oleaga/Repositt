@@ -80,7 +80,7 @@ int Menu(COORD Center, int &ItemNumber);
 void GotoXY(COORD &Pos);
 int Play(COORD SizeWin, unsigned int &Score);
 bool EscMsBox(COORD SizeWin,CharAttr *Scrn);
-bool TryMsBox(COORD TopLeft, CharAttr Scrn[sizeY][sizeX], int TryCnt);
+bool TryMsBox(COORD SizeWin, CharAttr Scrn[sizeY][sizeX], int TryCnt);
 bool MoveGhosts(Ghost Ghosts[], CharAttr Scrn[sizeY][sizeX]);
 bool MoveHead(Ghost *Head, CharAttr Scrn[sizeY][sizeX], int Key, COORD &StartPos, COORD &TopLeft, COORD &BottRight, unsigned int &Score, unsigned int &FieldCount);
 void PrintChr(COORD Pos, unsigned char Clr, unsigned char Smbl);
@@ -93,6 +93,7 @@ void ShowRecords(COORD SizeWin, char NameList[StrCount][LenStr], unsigned int Sc
 void SetName(COORD SizeWin, COORD Pos, char Str[21]);
 void Exit(COORD SizeWin);
 void Settings(COORD SizeWin);
+void ClearRect(COORD SizeWin, COORD Pos, COORD Size);
 
 int main()
 {
@@ -848,6 +849,7 @@ bool MoveHead(Ghost *Head, CharAttr Scrn[sizeY][sizeX], int Key, COORD &StartPos
 		}
 		else
 		{
+			if(Scrn[Head->CurPos.Y][Head->CurPos.X].Symbol==ChGhost) GameOver = 1;
 			Scrn[Head->CurPos.Y][Head->CurPos.X].Symbol=ChLine;
 			Scrn[Head->CurPos.Y][Head->CurPos.X].Color=TA.LineTextAttr;
 		}
@@ -859,7 +861,7 @@ bool MoveHead(Ghost *Head, CharAttr Scrn[sizeY][sizeX], int Key, COORD &StartPos
 	return GameOver;
 }
 
-bool TryMsBox(COORD TopLeft, CharAttr Scrn[sizeY][sizeX], int TryCnt)
+bool TryMsBox(COORD SizeWin, CharAttr Scrn[sizeY][sizeX], int TryCnt)
 {
 	const int MB_N = 5;
 	const int MB_M = 35;
@@ -877,31 +879,31 @@ bool TryMsBox(COORD TopLeft, CharAttr Scrn[sizeY][sizeX], int TryCnt)
 	SetConsoleOutputCP(1251);
 	if(TryCnt < 0)
 	{
-		TopLeft.X = (TopLeft.X-MB_M+10)/2;
-		TopLeft.Y = TopLeft.Y/2-2;
-		PrintStr(TopLeft, TA.LightSelTextAttr, "                          ");
-		TopLeft.Y++;
-		PrintStr(TopLeft, NULL, "    Вы прошли уровень!    ");
-		TopLeft.Y++;
-		PrintStr(TopLeft, NULL, "                          ");
+		SizeWin.X = (SizeWin.X-MB_M+10)/2;
+		SizeWin.Y = SizeWin.Y/2-2;
+		PrintStr(SizeWin, TA.LightSelTextAttr, "                          ");
+		SizeWin.Y++;
+		PrintStr(SizeWin, NULL, "    Вы прошли уровень!    ");
+		SizeWin.Y++;
+		PrintStr(SizeWin, NULL, "                          ");
 		SetConsoleTextAttribute(handle, TA.BorderTextAttr); 
 		getch();
 	}
 	if(TryCnt > 0)
 	{
-		TopLeft.X = (TopLeft.X-MB_M+1)/2;
-		TopLeft.Y = TopLeft.Y/2-3;
+		SizeWin.X = (SizeWin.X-MB_M+1)/2;
+		SizeWin.Y = SizeWin.Y/2-3;
 	
-		Pos.X = TopLeft.X;
+		Pos.X = SizeWin.X;
 		SetConsoleTextAttribute(handle, TA.LightSelTextAttr);
 		for(i = 0;i<MB_N;i++)
 		{
-			Pos.Y = TopLeft.Y+i;
+			Pos.Y = SizeWin.Y+i;
 			PrintStr(Pos, NULL, MB[i]);
 		}
 		SetConsoleOutputCP(CodePage);
-		Pos.X = TopLeft.X+25;
-		Pos.Y = TopLeft.Y+3;
+		Pos.X = SizeWin.X+25;
+		Pos.Y = SizeWin.Y+3;
 		GotoXY(Pos);
 		SetConsoleTextAttribute(handle, TA.XTextAttr);
 		printf("%d", TryCnt);
@@ -912,8 +914,8 @@ bool TryMsBox(COORD TopLeft, CharAttr Scrn[sizeY][sizeX], int TryCnt)
 		{
 			for(j = 0;j<MB_M;j++)
 			{
-				Pos.X = j+TopLeft.X;
-				Pos.Y = i+TopLeft.Y;
+				Pos.X = j+SizeWin.X;
+				Pos.Y = i+SizeWin.Y;
 				PrintChr(Pos, Scrn[Pos.Y][Pos.X].Color, Scrn[Pos.Y][Pos.X].Symbol);
 
 			}
@@ -923,13 +925,13 @@ bool TryMsBox(COORD TopLeft, CharAttr Scrn[sizeY][sizeX], int TryCnt)
 	}
 	if(TryCnt == 0)
 	{
-		TopLeft.X = (TopLeft.X-MB_M+10)/2;
-		TopLeft.Y = TopLeft.Y/2-2;
-		PrintStr(TopLeft, TA.LightSelTextAttr, "                          ");
-		TopLeft.Y++;
-		PrintStr(TopLeft, NULL, "       Вы проиграли       ");
-		TopLeft.Y++;
-		PrintStr(TopLeft, NULL, "                          ");
+		SizeWin.X = (SizeWin.X-MB_M+10)/2;
+		SizeWin.Y = SizeWin.Y/2-2;
+		PrintStr(SizeWin, TA.LightSelTextAttr, "                          ");
+		SizeWin.Y++;
+		PrintStr(SizeWin, NULL, "       Вы проиграли       ");
+		SizeWin.Y++;
+		PrintStr(SizeWin, NULL, "                          ");
 		SetConsoleTextAttribute(handle, TA.BorderTextAttr); 
 		getch();
 	}
@@ -1832,7 +1834,15 @@ void Settings(COORD SizeWin)
 			PosMenu.Y +=2;
 			PrintStr(PosMenu, TA.SelTextAttr, Items[1]);
 		}
-		for(j=1; j<SizeWin.Y-1; j++)
+		COORD Posss,Size;
+		Posss.X = SizeWin.X/2;
+		Posss.Y = 1;
+		Size.X = SizeWin.X-1-Posss.X;
+		Size.Y = SizeWin.Y-1-Posss.Y;
+		SetConsoleTextAttribute(handle, TMP_TA.BorderTextAttr);
+		//SetConsoleTextAttribute(handle, TMP_TA.LightSelTextAttr);  
+		ClearRect(SizeWin, Posss, Size);
+		/*for(j=1; j<SizeWin.Y-1; j++)
 		{
 			Pos.Y=j;
 			for(i=SizeWin.X/2; i<SizeWin.X-1; i++)
@@ -1840,10 +1850,41 @@ void Settings(COORD SizeWin)
 				Pos.X=i;
 				PrintChr(Pos, TMP_TA.BorderTextAttr, ' ');
 			}
-		}
+		}*/
 		
 	}
 	TA=TMP_TA;
 	SetConsoleTextAttribute(handle, TA.BorderTextAttr);
 	system("cls");
+}
+
+void ClearRect(COORD SizeWin, COORD Pos, COORD Size)
+{
+	
+	int i, j;
+	COORD Pos2=Pos;
+	char *str=(char *)malloc(sizeof(char)*(SizeWin.X+1));
+	str[0]='\0';
+
+	GotoXY(Pos2);
+	for(i=Pos2.Y; i<Size.Y+1; i++)
+	{
+		for(j=0; j<Size.X-Pos2.X; j++)
+		{
+			str[j]='*';
+		}
+		str[j]='\0';
+		printf(str);
+		Pos2.Y++;
+		GotoXY(Pos2);
+	}
+	free(str);
+	GotoXY(Pos);
+}
+
+void GetCurPos(COORD *Pos)
+{
+	CONSOLE_SCREEN_BUFFER_INFO CSBI;
+	GetConsoleScreenBufferInfo(handle, &CSBI);
+	*Pos=CSBI.dwCursorPosition;
 }
